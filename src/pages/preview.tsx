@@ -5,9 +5,22 @@ import { motion } from "framer-motion";
 import PreviewLayout from "../layout/preview";
 import { Box } from "@mui/material";
 import SharedFooter from "../components/preview/sharedFooter";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { infoAlert } from "../utils/alertMessage";
 
 const PreviewCardPage = () => {
   const { avatar, getValues } = useLinks();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const id = getValues("id");
+
+    if (!id) {
+      infoAlert("Please save the link, before to see the preview.");
+      navigate("/links");
+    }
+  }, []);
 
   return (
     <motion.div
