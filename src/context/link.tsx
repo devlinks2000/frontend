@@ -124,6 +124,12 @@ export const LinksProvider = ({ children }: LinksProviderProps) => {
   }, [errors]);
 
   useEffect(() => {
+    if (view === "profile" && errors.links) {
+      errorAlert("Links have errors. Please correct them before submitting.");
+    }
+  }, [errors, view]);
+
+  useEffect(() => {
     getData();
   }, []);
 
