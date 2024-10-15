@@ -1,0 +1,5 @@
+node_modules
+dist
+.env
+.storybook
+.DS_Store

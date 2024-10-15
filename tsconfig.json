@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "esnext", // or 'es2020'/'es2022'
+    "target": "esnext",
+    "lib": ["dom", "esnext"],
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "outDir": "./dist",
+    "sourceMap": true, // Enable source maps for better debugging
+    "forceConsistentCasingInFileNames": true
+  }
+}
