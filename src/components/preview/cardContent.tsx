@@ -27,7 +27,7 @@ export default function CardContentView({
     <Box zIndex={10}>
       <Card
         sx={{
-          mt: "10px",
+          mt: "40px",
           p: 2,
           width: "300px",
           borderRadius: "16px",

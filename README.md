@@ -1,8 +1,8 @@
-# Link Sharing App
+# DevLinks App
 
 ## Overview
 
-In this project, you'll build a fully-functional link-sharing app for developers! You'll practice working with image uploads, repeater fields, drag-and-drop, and more!
+In this project, you'll build a fully-functional DevLinks app for developers! You'll practice working with image uploads, repeater fields, drag-and-drop, and more!
 
 ## Technologies Used
 
@@ -11,6 +11,40 @@ In this project, you'll build a fully-functional link-sharing app for developers
 - **Material UI**: A popular React UI framework for styling components.
 - **Storybook**: A tool for developing UI components in isolation.
 - **Jest**: A testing framework for JavaScript.
+
+## Pages
+
+- Home page
+
+  ![Home Page](readmeImages/HomePage.png)
+
+- Login page
+
+  ![Login Page](readmeImages/LoginPage.png)
+
+- Register page
+
+  ![Register Page](readmeImages/RegisterPage.png)
+
+- Links page
+
+  ![Links Page](readmeImages/LinksPage.png)
+
+- Profile page
+
+  ![Profile Page](readmeImages/ProfilePage.png)
+
+- Preview page
+
+  ![Preview Page](readmeImages/PreviewPage.png)
+
+- Details page
+
+  ![Details Page](readmeImages/DetailsPage.png)
+
+- Not Found page
+
+  ![Not Found Page](readmeImages/NotFoundPage.png)
 
 ## Getting Started
 

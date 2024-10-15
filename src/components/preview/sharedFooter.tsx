@@ -1,17 +1,17 @@
 import { Box } from "@mui/material";
 import React, { useMemo } from "react";
 import { ShareSocial } from "react-share-social";
-import { useLinks } from "../../context/link";
 
-export default function SharedFooter() {
-  const { getValues } = useLinks();
+interface SharedFooterProps {
+  id: string;
+}
 
+export default function SharedFooter({ id }: SharedFooterProps) {
   const url = useMemo(() => {
-    const id = getValues("id") || [];
     const url = window.location;
 
     return `${url.protocol}//${url.host}/${id}`;
-  }, [getValues]);
+  }, [id]);
 
   const style = {
     root: {

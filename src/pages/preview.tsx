@@ -12,15 +12,14 @@ import { infoAlert } from "../utils/alertMessage";
 const PreviewCardPage = () => {
   const { avatar, getValues } = useLinks();
   const navigate = useNavigate();
+  const id = getValues("id");
 
   useEffect(() => {
-    const id = getValues("id");
-
     if (!id) {
       infoAlert("Please save the link, before to see the preview.");
       navigate("/links");
     }
-  }, []);
+  }, [id]);
 
   return (
     <motion.div
@@ -47,7 +46,7 @@ const PreviewCardPage = () => {
             email={getValues("email")}
             links={getValues("links")}
           />
-          <SharedFooter />
+          <SharedFooter id={id} />
         </Box>
       </PreviewLayout>
     </motion.div>

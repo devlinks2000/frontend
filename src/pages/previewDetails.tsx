@@ -9,10 +9,10 @@ import _ from "lodash";
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
 import ProfileNotFound from "../components/profileNotFound";
+import SharedFooter from "../components/preview/sharedFooter";
 
 const PreviewDetailsPage = () => {
   const { id } = useParams();
-  console.log("🚀 ~ PreviewDetailsPage ~ id:", id);
   const navigate = useNavigate();
   const [linkData, setLinkData] = useState<LinksState>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -23,7 +23,6 @@ const PreviewDetailsPage = () => {
       setLoading(true);
       try {
         const linkData = await LinkService.getLinkById(id);
-        console.log("🚀 ~ fetchLink ~ linkData:", linkData);
         setLinkData(linkData);
         if (!linkData) {
           setDataNotFound(true);
@@ -55,10 +54,15 @@ const PreviewDetailsPage = () => {
         >
           <PreviewLayout>
             <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              minHeight="100vh"
+              height={"100vh"}
+              width={"100vw"}
+              position={"absolute"}
+              left={0}
+              top={0}
+              display={"flex"}
+              justifyContent={"center"}
+              alignItems={"center"}
+              flexDirection={"column"}
             >
               <CardContentView
                 avatarUrl={_.get(linkData, "avatar", "") as string}
@@ -70,6 +74,7 @@ const PreviewDetailsPage = () => {
                 email={_.get(linkData, "email", "")}
                 links={_.get(linkData, "links", "") as Link[]}
               />
+              <SharedFooter id={_.get(linkData, "id", "")} />
             </Box>
           </PreviewLayout>
         </motion.div>
