@@ -93,7 +93,7 @@ interface LinksProviderProps {
   children?: ReactElement;
 }
 
-export const LinksProvider = ({ children }: LinksProviderProps) => {
+export function LinksProvider({ children }: LinksProviderProps) {
   const [view, setView] = useState<"links" | "profile">("links");
   const [avatar, setAvatar] = useState<string>(null);
   const [loading, setLoading] = useState(false);
@@ -185,8 +185,6 @@ export const LinksProvider = ({ children }: LinksProviderProps) => {
     }
   };
 
-  const result = children ?? <Outlet />;
-
   return (
     <LinksContext.Provider
       value={{
@@ -207,7 +205,7 @@ export const LinksProvider = ({ children }: LinksProviderProps) => {
         onLinkSubmit,
       }}
     >
-      {loading ? <LoadingView /> : result}
+      {loading ? <LoadingView /> : <>{children ?? <Outlet />}</>}
     </LinksContext.Provider>
   );
 };

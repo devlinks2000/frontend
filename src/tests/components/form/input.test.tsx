@@ -1,46 +1,39 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { useForm, FormProvider } from "react-hook-form";
+import { render, screen } from "@testing-library/react";
+import { useForm } from "react-hook-form";
 import FormInput from "../../../components/form/input";
 
-const TestComponent = () => {
-  const methods = useForm();
+// Wrapper component to use the useForm hook
+const FormInputWrapper = (props) => {
+  const { control } = useForm(); // useForm hook is called inside a React component
   return (
-    <FormProvider {...methods}>
-      <FormInput
-        control={methods.control}
-        errors={{}} // You can pass errors as needed for your test
-        name="testInput"
-        label="Test Input"
-        placeholder="Enter text"
-      />
-    </FormProvider>
+    <FormInput
+      control={control}
+      errors={{}}
+      name="testInput"
+      label="Test Input"
+      {...props}
+    />
   );
 };
 
-describe("FormInput Component", () => {
-  it("renders correctly with given props", () => {
-    render(<TestComponent />);
+const renderFormInput = (props = {}) => {
+  return render(<FormInputWrapper {...props} />);
+};
 
-    // Adjusting the query to use regex to account for asterisk
-    const inputElement = screen.getByLabelText(/Test Input/i);
-    expect(inputElement).toBeInTheDocument();
-    expect(inputElement).toHaveAttribute("placeholder", "Enter text");
+describe("FormInput", () => {
+  it("renders with the correct label", () => {
+    renderFormInput();
+    expect(screen.getByLabelText(/test input/i)).toBeInTheDocument();
   });
 
-  it("allows the user to type in the input", () => {
-    render(<TestComponent />);
+  it("displays an error message when there is an error", () => {
+    renderFormInput({ errors: { testInput: { message: "Error message" } } });
+    expect(screen.getByText(/error message/i)).toBeInTheDocument();
+  });
 
-    const inputElement = screen.getByLabelText(
-      /Test Input/i
-    ) as HTMLInputElement; // Cast to HTMLInputElement
-    expect(inputElement).toBeInTheDocument();
-
-    // Simulate typing into the input field
-    fireEvent.change(inputElement, { target: { value: "Hello, World!" } });
-
-    // Check if the value has been updated
-    expect(inputElement.value).toBe("Hello, World!"); // Now this works
+  it("is disabled when the disabled prop is true", () => {
+    renderFormInput({ disabled: true });
+    expect(screen.getByLabelText(/test input/i)).toBeDisabled();
   });
 });

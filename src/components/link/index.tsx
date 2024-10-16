@@ -95,13 +95,11 @@ const LinkForm = () => {
           padding: isMobile ? "5px" : "10px 20px",
         }}
       >
-        {/* Fixed Header */}
         <Box sx={{ flexShrink: 0 }}>
           <Header />
           {renderAddLinkButton()}
         </Box>
 
-        {/* Scrollable Cards Section */}
         <Box
           sx={{
             flexGrow: 1,
@@ -111,7 +109,6 @@ const LinkForm = () => {
           {fields.length === 0 ? <GetStartedComponent /> : renderCards()}
         </Box>
 
-        {/* Fixed Footer */}
         {fields.length !== 0 && <Footer loading={linkLoading} />}
       </Box>
     </form>
