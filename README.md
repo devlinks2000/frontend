@@ -77,3 +77,19 @@ In this project, you'll build a fully-functional DevLinks app for developers! Yo
 ### Running the App
 
 To start the development server, run:
+
+```bash
+npm start
+# or
+yarn start
+```
+
+### Running Storybook
+
+To start Storybook, run:
+
+```bash
+npm run storybook
+# or
+yarn storybook
+```
