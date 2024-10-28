@@ -11,5 +11,6 @@
     "outDir": "./dist",
     "sourceMap": true, // Enable source maps for better debugging
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "exclude": ["src/stories"]
 }
